@@ -4,7 +4,7 @@ const port = 8080;
 
 // Basic endpoint
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    app.use(express.static(path.join(__dirname, 'index.html')));
 });
 
 // Health check endpoint
