@@ -1,15 +1,18 @@
-const express = require("express");
-const http = require("http");
-const path = require("path");
-
+const express = require('express');
 const app = express();
 const port = 8080;
 
-// Serve static HTML file
-app.use(express.static(__dirname)); 
+// Basic endpoint
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
 
-const server = http.createServer(app);
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).send('Healthy');
+});
 
-server.listen(port, () => {
-    console.log(`Server has started on http://localhost:${port}`);
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
